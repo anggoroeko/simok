@@ -1,0 +1,27 @@
+.navbar-default {
+  	background-color: #4d4d4d;
+}
+
+.navbar-default .navbar-brand {
+  	color: rgb(64, 64, 64);
+}
+
+.navbar-default .navbar-nav > li > a {
+  	color: #ebebfa;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  	color: white;
+}
+
+.navbar-default .navbar-toggle {
+  	border-color: #c0392b;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  	color: white;
+  	background-color: rgb(89, 89, 89);
+}

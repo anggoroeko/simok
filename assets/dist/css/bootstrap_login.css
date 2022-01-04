@@ -1,0 +1,119 @@
+body{
+  background-color: rgb(206, 218, 224);
+  font-style: sans-serif;
+}
+
+.panel-login {
+  border: none;
+  box-shadow: 0px 0px 10px 1px rgb(65, 187, 244); /*LEFT, TOP, OPACITY, GAP TO BROWSER*/
+  border-radius: 10px; /*RADIUS POINT OF SQUARE*/
+  margin-top: -40px;
+  margin: 0 auto;
+  margin-top: 100px;
+
+  }
+
+.checkbox {
+  margin-left: 20px;
+}
+
+.btn-log {
+  width: 150px;
+}
+
+.panel-login .checkbox label {
+    padding-left: 25px;
+    display: inline-block;
+    position: absolute;
+  }
+
+.panel-login .checkbox label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  margin-left: 0px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  
+}
+
+.panel-login .checkbox label::after { /*LOCATION, COLOR, etc OF CHECK LIST*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-top: 1px;
+  font-size: 11px;
+  color: #555555;
+}
+
+.panel-login .checkbox input[type="checkbox"] {
+  opacity: 0;
+}
+
+.panel-login .checkbox :focus + label::before { /*SHOW LINE OUTLINE CHECK LIST*/
+  outline: 50px auto;
+}
+
+.panel-login .checkbox :checked + label::after { /*SHOW FONT AWESOME FOR CHECK LIST*/
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+.panel-login>.panel-heading .tabs{
+  padding: 0;
+}
+
+.panel-login h2{
+  font-size: 20px;
+  margin: 30px; /*PADDING : GAP BETWEEN CONTENT AND BORDER*/
+}
+
+.panel-login .form-group {
+  padding: 0 30px 10px;        /*GAP BETWEEN : TOP, RIGHT AND LEFT/CENTER, BOTTOM*/
+}
+
+.panel-login input[type="text"], .panel-login input[type="password"] { /*SET INPUT TYPE STYLE*/
+  height: 50px;
+  border: 0;
+  font-size: 16px;
+  box-shadow: none;
+  border-bottom: 1px solid #e7e7e7; 
+  border-radius: 1px;
+  padding: 10px 0px 0px; /*TOP, LEFT, BOTTOM*/
+}
+
+.panel-heading a{
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.loss_pass {
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.log-style {
+  color: white;
+  background: rgb(64, 153, 196);
+  height: 30px;
+  border-radius: 0 0 10px 10px;
+}
+
+.log-style label {
+  margin-top: 5px;
+}
+
+.log-style a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer {
+  margin-top: 10px;
+}
