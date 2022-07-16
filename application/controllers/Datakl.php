@@ -833,7 +833,7 @@ class Datakl extends CI_Controller{
 			7 => 'segment',
 			8 => 'client_contract',
 			9 => 'partner_name',
-			11 => 'date'
+			11 => 'date.keyword'
 		);
 
 		$esquery = ["query" => [
@@ -843,7 +843,7 @@ class Datakl extends CI_Controller{
 											"match" => ["table" => $table]
 										],
 										[
-											"match" => ["status" => "active"]
+											"match" => ["status.keyword" => "active"]
 										]
 							]
 						]
@@ -946,7 +946,7 @@ class Datakl extends CI_Controller{
 		}
 
 		$queryRecords = $this->elasticsearch->advancedquery('_doc', json_encode($esquery));
-		//return $queryRecords;
+		//print_r(json_encode($esquery)); die;
 
 		$totalRecords = $queryRecords['hits']['total'];
 	

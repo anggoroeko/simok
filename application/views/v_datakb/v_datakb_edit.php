@@ -27,7 +27,7 @@
 			}
 		?>
 
-          <form method="POST" action='/datakb/added/<?= $data['hits']['hits'][0]['_id'] ?>?url=<?= $position_file ?>' enctype="multipart/form-data">
+	  <form method="POST" action='<?= base_url() ?>datakb/added/<?= $data['hits']['hits'][0]['_id'] ?>?url=<?= $position_file ?>' enctype="multipart/form-data">
 			<?php //echo form_open('/datakb/added/'.$data['hits']['hits'][0]['_id']); ?>
 				<div class="box-body">
 					<div class="row">
@@ -327,7 +327,7 @@
 								if(!empty($data['hits']['hits'][0]['_source']['position_file'])){
 							?>
 							
-							<a target=_blank href=/datakb/download?url=<?= $data['hits']['hits'][0]['_source']['position_file'] ?>><img width="10%" src="/assets/dist/img/documents-icon.png"></a>
+							<a target=_blank href="/datakb/download?url=<?= $data['hits']['hits'][0]['_source']['position_file'] ?>><img width="10%" src="/assets/dist/img/documents-icon.png"></a>
 							
 							<?php
 								}

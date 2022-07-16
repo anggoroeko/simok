@@ -12,6 +12,7 @@ class Datakb extends CI_Controller{
 	}
 	
 	function index(){
+		// phpInfo(); die;
 		$data_title="List KB";
 		$data['menu'] = 'datakb';
 		$data['submenu'] = 'list_kb';
@@ -22,6 +23,7 @@ class Datakb extends CI_Controller{
 		);
 
 		$footer = '<script src="'.base_url().'assets/dist/js/sweetalert.min.js"></script>';
+		$footer .= '<script>var base_url = "'.base_url().'"</script>';
 		$footer .= '<script src="'.base_url().'assets/dist/js/datatable_data.js?'.rand().'"></script>';
 		$footer .= '<script> var status_user = '.$this->session->userdata['isLogin']['status_user'].'</script>';
 
@@ -261,10 +263,10 @@ class Datakb extends CI_Controller{
 					
 					//print_r(json_encode($data)); die;
 					$post_data = $this->elasticsearch->add_post('_doc', json_encode($data));
-					//print_r($post_data); die;
+					// print_r($post_data); die;
 					if($post_data['_shards']['failed'] == 0){
 						//upload to server
-						$upload_file = $this->uploads->upload_file($name,$path,$file_name);
+						$upload_file = $this->uploads->upload_file($name, $path, $file_name);
 						
 						$this->session->set_flashdata('pesan',
 											"<div class=\"col-md-12\" style=\"margin-top: 20px\">
@@ -410,6 +412,7 @@ class Datakb extends CI_Controller{
 		
 		$footer = '<script src="'.base_url().'assets/dist/js/datatable_data.js?'.rand().'"></script>';
 		$footer .= '<script> var no_kb = \''.$data['data']['hits']['hits'][0]['_source']['number_of_kb'].'\' </script>';
+		$footer .= '<script>var base_url = "'.base_url().'"</script>';
 		
 
 		$this->classlayout->masterview($template, $title, $footer);
@@ -530,31 +533,31 @@ class Datakb extends CI_Controller{
 		//print_r($params); die;
 
 		$table = "datakb";
-		$field_1 = "project_name_kb.raw";
-		$field_2 = "number_of_kb.raw";
-		$field_3 = "contract_date.raw";
-		$field_4 = "start_date.raw";
+		$field_1 = "project_name_kb.keyword";
+		$field_2 = "number_of_kb.keyword";
+		$field_3 = "contract_date.keyword";
+		$field_4 = "start_date.keyword";
 
 		//elasticsearch column definition
 		$columns = array(
-			2 => 'contract_date',
-			3 => 'start_date',
-			4 => 'end_date',
-			6 => 'project_value',
-			7 => 'segment',
-			8 => 'client_contract',
-			9 => 'partner_name',
-			11 => 'date'
+			2 => 'contract_date.keyword',
+			3 => 'start_date.keyword',
+			4 => 'end_date.keyword',
+			6 => 'project_value.keyword',
+			7 => 'segment.keyword',
+			8 => 'client_contract.keyword',
+			9 => 'partner_name.keyword',
+			11 => 'date.keyword'
 		);
 
 		$esquery = ["query" => [
 						"bool" => [
 							"must" => [
 										[
-											"match" => ["table" => $table]
+											"match" => ["table.keyword" => $table]
 										],
 										[
-											"match" => ["status" => "active"]
+											"match" => ["status.keyword" => "active"]
 										]
 							]
 						]
@@ -581,8 +584,8 @@ class Datakb extends CI_Controller{
 											]
 										] ],
 
-									[ "match" => ["table" => $table] ],
-									[ "match" => ["status" => "active"] ]
+									[ "match" => ["table.keyword" => $table] ],
+									[ "match" => ["status.keyword" => "active"] ]
 								]
 							]
 					],
@@ -609,8 +612,8 @@ class Datakb extends CI_Controller{
 										]
 									] ],
 
-								[ "match" => ["table" => $table] ],
-								[ "match" => ["status" => "active"] ]
+								[ "match" => ["table.keyword" => $table] ],
+								[ "match" => ["status.keyword" => "active"] ]
 							]
 						]
 				],
@@ -638,8 +641,8 @@ class Datakb extends CI_Controller{
 												]
 											] ],
 
-										[ "match" => ["table" => $table] ],
-										[ "match" => ["status" => "active"] ]
+										[ "match" => ["table.keyword" => $table] ],
+										[ "match" => ["status.keyword" => "active"] ]
 									]
 								]
 						],
@@ -657,9 +660,9 @@ class Datakb extends CI_Controller{
 		}
 
 		$queryRecords = $this->elasticsearch->advancedquery('_doc', json_encode($esquery));
-		//return $queryRecords;
-
-		$totalRecords = $queryRecords['hits']['total'];
+		// print_r($queryRecords); die;
+    	//print_r(json_encode($esquery)); die;  
+		$totalRecords = $queryRecords['hits']['total']['value'];
 	
 		$json_data = array(
 			"draw"            => intval( $params['draw'] ),   
@@ -725,7 +728,7 @@ class Datakb extends CI_Controller{
 					"multi_match" => [
 					"query"	=>      "datakl ".$no_kb,
 					"type"	=>       "cross_fields",
-					"fields"	=>     [ 'table', 'number_of_kb' ],
+					"fields"	=>     [ 'table.keyword', 'number_of_kb.keyword' ],
 					"operator"	=>   "and"
 						]
 					]
@@ -742,8 +745,8 @@ class Datakb extends CI_Controller{
 											]
 										] ],
 
-									[ "match" => ["table" => $table] ],
-									[ "match" => ["status" => "active"] ]
+									[ "match" => ["table.keyword" => $table] ],
+									[ "match" => ["status.keyword" => "active"] ]
 								]
 							]
 					],

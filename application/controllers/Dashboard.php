@@ -59,7 +59,6 @@ class Dashboard extends CI_Controller {
 				];
 
 		$value = $this->elasticsearch->advancedquery('_doc', json_encode($esquery));
-		
 		if(!empty($value['hits']['hits'])){
 			$userPassword = $value['hits']['hits'][0]['_source']['userPassword'];
 			foreach ($value['hits']['hits'] as $n_value) {

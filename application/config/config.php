@@ -28,7 +28,7 @@ date_default_timezone_set("Asia/Jakarta");
 /*$config['base_url'] = ((isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) ? "https" : "http");
 $config['base_url'] .= "://" . $_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);*/
-$config['base_url'] = "http://103.89.1.46:8082/";
+$config['base_url'] = "http://10.11.12.72/simok/";
 
 
 /*

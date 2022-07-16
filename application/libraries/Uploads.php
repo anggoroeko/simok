@@ -8,11 +8,11 @@ class Uploads {
 
 	public function upload_image($name="",$path="",$file_name="",$max_size="")
 	{
-		ini_set('post_max_size', '64M');
-		ini_set('upload_max_filesize', '64M');
+		ini_set('post_max_size', '100M');
+		ini_set('upload_max_filesize', '100M');
 
 		empty($path) ? $path = "assets/uploads" : $path = $path;
-		$max_size = empty($max_size) ? 1024*4 : $max_size;
+		$max_size = empty($max_size) ? 1024*100 : $max_size;
 		
 		if (!is_dir($path)) {
 			mkdir($path, 0777, TRUE);

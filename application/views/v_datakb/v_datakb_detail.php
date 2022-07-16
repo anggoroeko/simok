@@ -62,7 +62,7 @@
                   ?>
 
                   <dt>File KB</dt>
-                  <dd><a target=_blank href=/datakb/download?url=<?= $data['hits']['hits'][0]['_source']['position_file'] ?>><img width="10%" src="/assets/dist/img/documents-icon.png"></a></dd>
+                  <dd><a target=_blank href="<?= base_url() ?>datakb/download?url=<?= $data['hits']['hits'][0]['_source']['position_file'] ?>"><img width="10%" src="<?=base_url()?>assets/dist/img/documents-icon.png"></a></dd>
                   
                   <?php
                     }

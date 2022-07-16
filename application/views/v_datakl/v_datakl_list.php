@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data KB
+        Data KL
         <!-- <small>Advanced form element</small> -->
       </h1>
       <ol class="breadcrumb">

@@ -19,7 +19,7 @@
       <div class="col-md-12">
         <div class="box box-info">
 				
-          	<form method="POST" action="/datakb/added" enctype="multipart/form-data">
+          	<form method="POST" action="<?= base_url() ?>datakb/added" enctype="multipart/form-data">
 				<div class="box-body">
 					<div class="row">
 						<!--column-1--> 

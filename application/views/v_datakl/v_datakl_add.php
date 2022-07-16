@@ -19,7 +19,7 @@
       <div class="col-md-12">
         <div class="box box-info">
 				
-          <form method="POST" action="/datakl/added" enctype="multipart/form-data">
+	<form method="POST" action="<?= base_url() ?>datakl/added" enctype="multipart/form-data">
 					<!-- <?php echo form_open('/datakl/added'); ?> -->
 
 						<div class="box-body">

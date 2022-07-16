@@ -329,25 +329,25 @@ class Users extends CI_Controller {
 		//print_r($params); die;
 
 		$table = "users";
-		$field_1 = "first_name";
-		$field_2 = "last_name";
+		$field_1 = "first_name.keyword";
+		$field_2 = "last_name.keyword";
 
 		//elasticsearch column definition
 		$columns = array(
-			1 => 'first_name',
-			2 => 'last_name',
-			3 => 'email',
-			4 => 'date',
+			1 => 'first_name.keyword',
+			2 => 'last_name.keyword',
+			3 => 'email.keyword',
+			4 => 'date.keyword',
 		);
 
 		$esquery = ["query" => [
 						"bool" => [
 							"must" => [
 										[
-											"match" => ["table" => $table]
+											"match" => ["table.keyword" => $table]
 										],
 										[
-											"match" => ["status" => "active"]
+											"match" => ["status.keyword" => "active"]
 										]
 							]
 						]
@@ -374,8 +374,8 @@ class Users extends CI_Controller {
 											]
 										] ],
 
-									[ "match" => ["table" => $table] ],
-									[ "match" => ["status" => "active"] ]
+									[ "match" => ["table.keyword" => $table] ],
+									[ "match" => ["status.keyword" => "active"] ]
 								]
 							]
 					],
